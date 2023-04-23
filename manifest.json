@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Screenshot Copy",
+  "version": "1.0",
+  "description": "Copy text from anywhere",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "start_take_screenshot": {
+      "suggested_key": "Ctrl+Shift+X",
+      "description": "takes screenshot and copies text to clipboard"
+    }
+  },
+  "permissions": ["activeTab", "tabs"],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js", "scripts/tesseract.min.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ]
+}
